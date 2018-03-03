@@ -47,7 +47,7 @@ package nolithius.domainwarping.demos
 
         public function DomainWarpingDemo3 ()
         {
-            baseSeed = new Input("Base Seed", 1111, 0);
+            baseSeed = new Input("Base Seed", 88, 0);
             baseSeed.x = 3;
             baseSeed.y = (MAP_HEIGHT + 2) * MAP_SCALE;
             addChild(baseSeed);
@@ -67,7 +67,7 @@ package nolithius.domainwarping.demos
             basePeriodY.y = basePeriodX.y + basePeriodX.height + Input.SPACING_Y;
             addChild(basePeriodY);
 
-            warpXSeed = new Input("Warp X Seed", 2222, 0);
+            warpXSeed = new Input("Warp X Seed", 77, 0);
             warpXSeed.x = baseSeed.x + baseSeed.width + Input.SPACING_X;
             warpXSeed.y = baseSeed.y;
             addChild(warpXSeed);
@@ -87,7 +87,7 @@ package nolithius.domainwarping.demos
             warpXPeriodY.y = warpXPeriodX.y + warpXPeriodX.height + Input.SPACING_Y;
             addChild(warpXPeriodY);
 
-            warpYSeed = new Input("Warp Y Seed", 3333, 0);
+            warpYSeed = new Input("Warp Y Seed", 3, 0);
             warpYSeed.x = warpXSeed.x + warpXSeed.width + Input.SPACING_X;
             warpYSeed.y = warpXSeed.y;
             addChild(warpYSeed);
@@ -176,6 +176,7 @@ package nolithius.domainwarping.demos
             noiseCircleGradientMap.update();
             noiseMultiplyMap.update();
 
+            noiseViewer.waterLine = waterLine.getValue();
             noiseViewer.update();
 
             warpXMap.seed = warpXSeed.getValue();
@@ -199,6 +200,7 @@ package nolithius.domainwarping.demos
             domainWarpCircleGradientMap.update();
             domainWarpMultiplyMap.update();
 
+            domainWarpViewer.waterLine = waterLine.getValue();
             domainWarpViewer.update();
         }
     }

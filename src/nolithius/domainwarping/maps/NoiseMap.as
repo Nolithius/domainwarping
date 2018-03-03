@@ -26,14 +26,8 @@ package nolithius.domainwarping.maps
 
         public override function update ():void
         {
-            var modifiedSeed:int = seed;
-            if (modifiedSeed == 0)
-            {
-                modifiedSeed = int(Math.random() * (int.MAX_VALUE - 1)) + 1;
-            }
-
             var bitmapData:BitmapData = new BitmapData(width, height, false, 0);
-            bitmapData.perlinNoise(width / periodX, height / periodY, octaves, modifiedSeed, true, true, 7, true);
+            bitmapData.perlinNoise(width / periodX, height / periodY, octaves, seed, true, true, 7, true);
 
             var pixels:Vector.<uint> = bitmapData.getVector(bitmapData.rect);
             var pixelsLength:uint = pixels.length;
