@@ -1,8 +1,8 @@
-package nolithius.domainwarping
+package nolithius.domainwarping.demos
 {
     import nolithius.domainwarping.maps.DomainWarpMap;
     import nolithius.domainwarping.maps.NoiseMap;
-    import nolithius.domainwarping.ui.MapViewer;
+    import nolithius.domainwarping.viewers.ElevationViewer;
 
 
     public class DomainWarpingDemo0 extends DomainWarpingDemo
@@ -20,7 +20,7 @@ package nolithius.domainwarping
             var warpY:NoiseMap = new NoiseMap(MAP_WIDTH_COVER, MAP_HEIGHT_COVER, SEED * 3, 8, 2, 2);
             var domainWarpMap:DomainWarpMap = new DomainWarpMap(noiseMap, warpX, warpY, MAP_HEIGHT_COVER);
 
-            var warpViewer:MapViewer = new MapViewer(domainWarpMap, 1);
+            var warpViewer:ElevationViewer = new ElevationViewer(domainWarpMap, 1);
             addChild(warpViewer);
         }
     }

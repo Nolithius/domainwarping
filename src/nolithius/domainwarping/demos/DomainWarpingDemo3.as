@@ -1,11 +1,15 @@
-package nolithius.domainwarping
+package nolithius.domainwarping.demos
 {
     import flash.events.Event;
 
+    import nolithius.domainwarping.maps.CircleGradientMap;
+
     import nolithius.domainwarping.maps.DomainWarpMap;
+    import nolithius.domainwarping.maps.MultiplyMap;
     import nolithius.domainwarping.maps.NoiseMap;
     import nolithius.domainwarping.ui.Input;
-    import nolithius.domainwarping.ui.MapViewer;
+    import nolithius.domainwarping.viewers.ElevationViewer;
+    import nolithius.domainwarping.viewers.TerrainViewer;
 
 
     public class DomainWarpingDemo3 extends DomainWarpingDemo
@@ -23,14 +27,22 @@ package nolithius.domainwarping
         public var warpYPeriodX:Input;
         public var warpYPeriodY:Input;
         public var amplitude:Input;
+        public var waterLine:Input;
+        public var gradientRadius:Input;
 
         public var noiseMap:NoiseMap;
+        public var noiseCircleGradientMap:CircleGradientMap;
+        public var noiseMultiplyMap:MultiplyMap;
+
         public var warpXMap:NoiseMap;
         public var warpYMap:NoiseMap;
-        public var domainWarpMap:DomainWarpMap;
 
-        public var noiseViewer:MapViewer;
-        public var domainWarpViewer:MapViewer;
+        public var domainWarpMap:DomainWarpMap;
+        public var domainWarpCircleGradientMap:CircleGradientMap;
+        public var domainWarpMultiplyMap:MultiplyMap;
+
+        public var noiseViewer:TerrainViewer;
+        public var domainWarpViewer:TerrainViewer;
 
 
         public function DomainWarpingDemo3 ()
@@ -100,9 +112,23 @@ package nolithius.domainwarping
             amplitude.y = warpYSeed.y;
             addChild(amplitude);
 
-            noiseMap = new NoiseMap(MAP_WIDTH, MAP_HEIGHT, baseSeed.getValue(), baseOctaves.getValue(), basePeriodX.getValue(), basePeriodY.getValue());
+            waterLine = new Input("Water Line %", 65, 0, 100);
+            waterLine.x = amplitude.x;
+            waterLine.y = amplitude.y + amplitude.height + Input.SPACING_Y;
+            addChild(waterLine);
 
-            noiseViewer = new MapViewer(noiseMap, MAP_SCALE);
+            gradientRadius = new Input("Radius %", 50, 1, 100);
+            gradientRadius.x = amplitude.x;
+            gradientRadius.y = waterLine.y + waterLine.height + Input.SPACING_Y;
+            addChild(gradientRadius);
+
+            var halfSmallestMapDimension:int = Math.min(MAP_WIDTH, MAP_HEIGHT) / 2;
+
+            noiseMap = new NoiseMap(MAP_WIDTH, MAP_HEIGHT, baseSeed.getValue(), baseOctaves.getValue(), basePeriodX.getValue(), basePeriodY.getValue());
+            noiseCircleGradientMap = new CircleGradientMap(MAP_WIDTH, MAP_HEIGHT, halfSmallestMapDimension - 1, (halfSmallestMapDimension - 1) * (gradientRadius.getValue()) / 100.0);
+            noiseMultiplyMap = new MultiplyMap(noiseMap, noiseCircleGradientMap);
+
+            noiseViewer = new TerrainViewer(noiseMultiplyMap, MAP_SCALE, waterLine.getValue());
             noiseViewer.x = MAP_SCALE;
             noiseViewer.y = MAP_SCALE;
             addChild(noiseViewer);
@@ -110,8 +136,10 @@ package nolithius.domainwarping
             warpXMap = new NoiseMap(MAP_WIDTH, MAP_HEIGHT, warpXSeed.getValue(), warpXOctaves.getValue(), warpXPeriodX.getValue(), warpXPeriodY.getValue());
             warpYMap = new NoiseMap(MAP_WIDTH, MAP_HEIGHT, warpYSeed.getValue(), warpYOctaves.getValue(), warpYPeriodX.getValue(), warpYPeriodY.getValue());
             domainWarpMap = new DomainWarpMap(noiseMap, warpXMap, warpYMap, amplitude.getValue());
+            domainWarpCircleGradientMap = new CircleGradientMap(MAP_WIDTH, MAP_HEIGHT, noiseCircleGradientMap.outerRadius,noiseCircleGradientMap.innerRadius);
+            domainWarpMultiplyMap = new MultiplyMap(domainWarpMap, domainWarpCircleGradientMap);
 
-            domainWarpViewer = new MapViewer(domainWarpMap, MAP_SCALE);
+            domainWarpViewer = new TerrainViewer(domainWarpMultiplyMap, MAP_SCALE, waterLine.getValue());
             domainWarpViewer.x = (MAP_WIDTH + 3) * MAP_SCALE;
             domainWarpViewer.y = MAP_SCALE;
             addChild(domainWarpViewer);
@@ -129,6 +157,8 @@ package nolithius.domainwarping
             warpYPeriodX.addEventListener(Event.CHANGE, handleInput);
             warpYPeriodY.addEventListener(Event.CHANGE, handleInput);
             amplitude.addEventListener(Event.CHANGE, handleInput);
+            waterLine.addEventListener(Event.CHANGE, handleInput);
+            gradientRadius.addEventListener(Event.CHANGE, handleInput);
         }
 
 
@@ -139,7 +169,13 @@ package nolithius.domainwarping
             noiseMap.periodX = basePeriodX.getValue();
             noiseMap.periodY = basePeriodY.getValue();
 
+            var halfSmallestMapDimension:int = Math.min(MAP_WIDTH, MAP_HEIGHT) / 2;
+            noiseCircleGradientMap.innerRadius = (halfSmallestMapDimension - 1) * (gradientRadius.getValue()) / 100.0;
+
             noiseMap.update();
+            noiseCircleGradientMap.update();
+            noiseMultiplyMap.update();
+
             noiseViewer.update();
 
             warpXMap.seed = warpXSeed.getValue();
@@ -157,8 +193,12 @@ package nolithius.domainwarping
             warpYMap.update();
 
             domainWarpMap.amplitude = amplitude.getValue();
+            domainWarpCircleGradientMap.innerRadius = noiseCircleGradientMap.innerRadius;
 
             domainWarpMap.update();
+            domainWarpCircleGradientMap.update();
+            domainWarpMultiplyMap.update();
+
             domainWarpViewer.update();
         }
     }

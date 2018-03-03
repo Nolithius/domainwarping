@@ -1,10 +1,10 @@
-package nolithius.domainwarping
+package nolithius.domainwarping.demos
 {
     import flash.events.Event;
 
     import nolithius.domainwarping.maps.NoiseMap;
     import nolithius.domainwarping.ui.Input;
-    import nolithius.domainwarping.ui.MapViewer;
+    import nolithius.domainwarping.viewers.ElevationViewer;
 
 
     public class DomainWarpingDemo1 extends DomainWarpingDemo
@@ -15,7 +15,7 @@ package nolithius.domainwarping
         public var periodY:Input;
 
         public var noiseMap:NoiseMap;
-        public var noiseViewer:MapViewer;
+        public var noiseViewer:ElevationViewer;
 
 
         public function DomainWarpingDemo1 ()
@@ -42,7 +42,7 @@ package nolithius.domainwarping
 
             noiseMap = new NoiseMap(MAP_WIDTH, MAP_HEIGHT, seed.getValue(), octaves.getValue(), periodX.getValue(), periodY.getValue());
 
-            noiseViewer = new MapViewer(noiseMap, MAP_SCALE);
+            noiseViewer = new ElevationViewer(noiseMap, MAP_SCALE);
             noiseViewer.x = MAP_SCALE;
             noiseViewer.y = MAP_SCALE;
             addChild(noiseViewer);

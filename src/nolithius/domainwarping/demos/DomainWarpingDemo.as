@@ -1,4 +1,4 @@
-package nolithius.domainwarping
+package nolithius.domainwarping.demos
 {
     import flash.display.Sprite;
 
@@ -7,12 +7,6 @@ package nolithius.domainwarping
     {
         public static const MAP_WIDTH:int = 118;
         public static const MAP_HEIGHT:int = 118;
-
         public static const MAP_SCALE:int = 4;
-
-
-        public function DomainWarpingDemo ()
-        {
-        }
     }
 }

@@ -1,11 +1,11 @@
-package nolithius.domainwarping
+package nolithius.domainwarping.demos
 {
     import flash.events.Event;
 
     import nolithius.domainwarping.maps.DomainWarpMap;
     import nolithius.domainwarping.maps.NoiseMap;
     import nolithius.domainwarping.ui.Input;
-    import nolithius.domainwarping.ui.MapViewer;
+    import nolithius.domainwarping.viewers.ElevationViewer;
 
 
     public class DomainWarpingDemo2 extends DomainWarpingDemo
@@ -29,8 +29,8 @@ package nolithius.domainwarping
         public var warpYMap:NoiseMap;
         public var domainWarpMap:DomainWarpMap;
 
-        public var noiseViewer:MapViewer;
-        public var domainWarpViewer:MapViewer;
+        public var noiseViewer:ElevationViewer;
+        public var domainWarpViewer:ElevationViewer;
 
 
         public function DomainWarpingDemo2 ()
@@ -102,7 +102,7 @@ package nolithius.domainwarping
 
             noiseMap = new NoiseMap(MAP_WIDTH, MAP_HEIGHT, baseSeed.getValue(), baseOctaves.getValue(), basePeriodX.getValue(), basePeriodY.getValue());
 
-            noiseViewer = new MapViewer(noiseMap, MAP_SCALE);
+            noiseViewer = new ElevationViewer(noiseMap, MAP_SCALE);
             noiseViewer.x = MAP_SCALE;
             noiseViewer.y = MAP_SCALE;
             addChild(noiseViewer);
@@ -111,7 +111,7 @@ package nolithius.domainwarping
             warpYMap = new NoiseMap(MAP_WIDTH, MAP_HEIGHT, warpYSeed.getValue(), warpYOctaves.getValue(), warpYPeriodX.getValue(), warpYPeriodY.getValue());
             domainWarpMap = new DomainWarpMap(noiseMap, warpXMap, warpYMap, amplitude.getValue());
 
-            domainWarpViewer = new MapViewer(domainWarpMap, MAP_SCALE);
+            domainWarpViewer = new ElevationViewer(domainWarpMap, MAP_SCALE);
             domainWarpViewer.x = (MAP_WIDTH + 3) * MAP_SCALE;
             domainWarpViewer.y = MAP_SCALE;
             addChild(domainWarpViewer);

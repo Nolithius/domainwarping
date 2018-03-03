@@ -33,7 +33,7 @@ package nolithius.domainwarping.maps
         }
 
 
-        public function update ():void
+        public override function update ():void
         {
             for (var ix:int = 0; ix < baseMap.width; ix++)
             {

@@ -34,6 +34,12 @@ package nolithius.domainwarping.maps
         }
 
 
+        public function update ():void
+        {
+
+        }
+
+
         public function normalize ():void
         {
             var smallest:uint = uint.MAX_VALUE;

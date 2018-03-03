@@ -24,7 +24,7 @@ package nolithius.domainwarping.maps
         }
 
 
-        public function update ():void
+        public override function update ():void
         {
             var modifiedSeed:int = seed;
             if (modifiedSeed == 0)
