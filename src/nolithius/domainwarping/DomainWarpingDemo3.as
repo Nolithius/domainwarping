@@ -8,7 +8,7 @@ package nolithius.domainwarping
     import nolithius.domainwarping.ui.MapViewer;
 
 
-    public class DomainWarpingDemo2 extends DomainWarpingDemo
+    public class DomainWarpingDemo3 extends DomainWarpingDemo
     {
         public var baseSeed:Input;
         public var baseOctaves:Input;
@@ -33,7 +33,7 @@ package nolithius.domainwarping
         public var domainWarpViewer:MapViewer;
 
 
-        public function DomainWarpingDemo2 ()
+        public function DomainWarpingDemo3 ()
         {
             baseSeed = new Input("Base Seed", 1111, 0);
             baseSeed.x = 3;

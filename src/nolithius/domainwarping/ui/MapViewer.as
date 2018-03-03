@@ -20,11 +20,11 @@ package nolithius.domainwarping.ui
             scale = p_scale;
             _rect = new Rectangle(0, 0, p_scale, p_scale);
 
-            draw();
+            update();
         }
 
 
-        public function draw ():void
+        public function update ():void
         {
             if (!_bitmapData)
             {
