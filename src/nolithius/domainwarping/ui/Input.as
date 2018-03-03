@@ -7,6 +7,10 @@ package nolithius.domainwarping.ui
     import flash.text.TextFormat;
 
 
+    /**
+     * @author Ebyan "Nolithius" Alvarez-Buylla
+     * http://www.nolithius.com
+     */
     public class Input extends Sprite
     {
         public static const SPACING_X:int = 20;

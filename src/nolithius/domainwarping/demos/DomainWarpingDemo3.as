@@ -3,15 +3,17 @@ package nolithius.domainwarping.demos
     import flash.events.Event;
 
     import nolithius.domainwarping.maps.CircleGradientMap;
-
     import nolithius.domainwarping.maps.DomainWarpMap;
     import nolithius.domainwarping.maps.MultiplyMap;
     import nolithius.domainwarping.maps.NoiseMap;
     import nolithius.domainwarping.ui.Input;
-    import nolithius.domainwarping.viewers.ElevationViewer;
     import nolithius.domainwarping.viewers.TerrainViewer;
 
 
+    /**
+     * @author Ebyan "Nolithius" Alvarez-Buylla
+     * http://www.nolithius.com
+     */
     public class DomainWarpingDemo3 extends DomainWarpingDemo
     {
         public var baseSeed:Input;

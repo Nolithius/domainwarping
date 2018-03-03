@@ -3,6 +3,10 @@ package nolithius.domainwarping.viewers
     import nolithius.domainwarping.maps.Map;
 
 
+    /**
+     * @author Ebyan "Nolithius" Alvarez-Buylla
+     * http://www.nolithius.com
+     */
     public class TerrainViewer extends Viewer
     {
         public static const COLOR_DEEP_WATER:int = 0x005ca9;

@@ -2,7 +2,10 @@ package nolithius.domainwarping.maps
 {
     import flash.display.BitmapData;
 
-
+    /**
+     * @author Ebyan "Nolithius" Alvarez-Buylla
+     * http://www.nolithius.com
+     */
     public class NoiseMap extends Map
     {
         public var seed:int;

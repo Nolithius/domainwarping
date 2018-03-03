@@ -5,6 +5,10 @@ package nolithius.domainwarping.demos
     import nolithius.domainwarping.viewers.ElevationViewer;
 
 
+    /**
+     * @author Ebyan "Nolithius" Alvarez-Buylla
+     * http://www.nolithius.com
+     */
     public class DomainWarpingDemo0 extends DomainWarpingDemo
     {
         public static const MAP_WIDTH_COVER:int = 960;

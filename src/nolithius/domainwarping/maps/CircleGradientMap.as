@@ -1,5 +1,9 @@
 package nolithius.domainwarping.maps
 {
+    /**
+     * @author Ebyan "Nolithius" Alvarez-Buylla
+     * http://www.nolithius.com
+     */
     public class CircleGradientMap extends Map
     {
         public var outerRadius:int;

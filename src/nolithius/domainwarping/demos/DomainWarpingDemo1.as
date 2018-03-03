@@ -7,6 +7,10 @@ package nolithius.domainwarping.demos
     import nolithius.domainwarping.viewers.ElevationViewer;
 
 
+    /**
+     * @author Ebyan "Nolithius" Alvarez-Buylla
+     * http://www.nolithius.com
+     */
     public class DomainWarpingDemo1 extends DomainWarpingDemo
     {
         public var seed:Input;

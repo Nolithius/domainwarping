@@ -3,6 +3,10 @@ package nolithius.domainwarping.viewers
     import nolithius.domainwarping.maps.Map;
 
 
+    /**
+     * @author Ebyan "Nolithius" Alvarez-Buylla
+     * http://www.nolithius.com
+     */
     public class ElevationViewer extends Viewer
     {
         public function ElevationViewer (p_map:Map, p_scale:int)

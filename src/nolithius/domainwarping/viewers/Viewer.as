@@ -8,6 +8,10 @@ package nolithius.domainwarping.viewers
     import nolithius.domainwarping.maps.Map;
 
 
+    /**
+     * @author Ebyan "Nolithius" Alvarez-Buylla
+     * http://www.nolithius.com
+     */
     public class Viewer extends Sprite
     {
         public var map:Map;

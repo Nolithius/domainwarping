@@ -1,5 +1,9 @@
 package nolithius.domainwarping.maps
 {
+    /**
+     * @author Ebyan "Nolithius" Alvarez-Buylla
+     * http://www.nolithius.com
+     */
     public class Map
     {
         public static const ELEVATION_MAX:int = 255;
